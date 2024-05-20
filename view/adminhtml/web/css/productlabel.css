@@ -1,0 +1,132 @@
+.lofproductlabel-table-position {
+    border-spacing: 2px;
+    border-collapse: initial;
+    background-image: url("../images/placeholder.jpg");
+    background-size: cover;
+}
+
+.lofproductlabel-table-position td {
+    padding: 40px;
+    border: 1px solid #adadad;
+    cursor: pointer;
+}
+
+.lofproductlabel-table-position td:hover {
+    background-color: #e4e4e4;
+}
+
+.lofproductlabel-table-position td.selected {
+    background-color: #eb5202 !important;
+}
+
+#product_position,
+#cat_position {
+    display: none;
+}
+
+#product_label_color,
+#cat_label_color,
+#product_text_color,
+#cat_text_color {
+    width: 252px;
+}
+
+img.lofproductlabel-shape-image {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.lofproductlabel-shape {
+    display: inline-block;
+    border: 1px solid #aaa;
+    margin: 0 10px 10px 0;
+    vertical-align: top;
+    padding: 2px;
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+.lofproductlabel-shapes-container label {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.lofproductlabel-shape [type="radio"]:checked,
+.lofproductlabel-shape [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.lofproductlabel-shape [type="radio"]:checked + label {
+    background-color: transparent;
+    border: 2px solid #000;
+}
+
+div.lofproductlabel-choose-container {
+    margin-bottom: 20px;
+    line-height: 3.2rem;
+}
+
+.lofproductlabel-image-preview{
+    display: block;
+    margin-right: 5px;
+    max-width: 250px;
+    vertical-align: top;
+}
+
+.lofproductlabel-image-preview label {
+    cursor: pointer;
+}
+
+.lofproductlabel-image-preview img {
+    width: 100%
+}
+
+.lofproductlabel-image-upload-wrap {
+    max-width: 225px;
+    display: block;
+    vertical-align: top;
+}
+
+.lofproductlabel-label-container,
+.lofproductlabel-position-wrapper {
+    z-index: 99 !important;
+}
+
+.lofproductlabel-choose-container label {
+    margin-right: 15px;
+}
+
+.lofproductlabel-image-upload {
+    opacity: 0;
+    display: none;
+}
+
+.lofproductlabel-file-upload {
+    cursor: pointer;
+}
+
+.lofproductlabel-file-upload-button {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.lofproductlabel-remove-image {
+    margin-top: 10px;
+}
+
+.lofproductlabel-remove-image input[type="checkbox"] {
+    margin-top: 0 !important;
+}

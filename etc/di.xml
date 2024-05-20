@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Lof\ProductLabel\Model\ResourceModel\Label\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lof_productlabel_label</argument>
+            <argument name="resourceModel" xsi:type="string">Lof\ProductLabel\Model\ResourceModel\Label</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="lofproductlabel_label_listing_data_source" xsi:type="string">Lof\ProductLabel\Model\ResourceModel\Label\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Lof\ProductLabel\Model\Rule">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="lofproductlabelSerializer" xsi:type="object">Lof\ProductLabel\Model\Serializer</item>
+                <item name="stockHelper" xsi:type="object">Lof\ProductLabel\Helper\Stock</item>
+                <item name="storeEmulation" xsi:type="object">Magento\Store\Model\App\Emulation</item>
+                <item name="scopeCodeResolver" xsi:type="object">Lof\ProductLabel\Plugin\App\Config\ScopeCodeResolver</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Lof\ProductLabel\Api\Data\LabelInterface" type="Lof\ProductLabel\Model\Label" />
+    <preference for="Lof\ProductLabel\Api\LabelRepositoryInterface" type="Lof\ProductLabel\Model\Repository\LabelRepository" />
+
+    <type name="Lof\ProductLabel\Model\Config\Backend\StockStatus">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="object">Lof\ProductLabel\Helper\Config</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Lof\ProductLabel\Model\Config\Backend\DefaultStockLabel">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="object">Lof\ProductLabel\Helper\Config</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Cron\RefreshSpecialPrices">
+        <plugin name="Lof_ProductLabel::detect-refresh-price" type="Lof\ProductLabel\Plugin\Catalog\Indexer\Product\Price"/>
+    </type>
+    <type name="Magento\Catalog\Model\Indexer\Product\Price">
+        <plugin name="Lof_ProductLabel::reindex-label-price-changes" type="Lof\ProductLabel\Plugin\Catalog\Indexer\Product\Price"/>
+    </type>
+
+    <type name="Magento\Framework\App\Config\ScopeCodeResolver">
+        <plugin name="Lof_ProductLabel::clean-scope-code" type="Lof\ProductLabel\Plugin\App\Config\ScopeCodeResolver"/>
+    </type>
+</config>

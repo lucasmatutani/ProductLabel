@@ -1,0 +1,13 @@
+.fotorama--fullscreen .lofproductlabel-label-container {
+    display: none;
+}
+
+.products-upsell .product-item .lofproductlabel-label-text {
+    font-size: 12px !important;
+    padding: 0 !important;
+}
+
+#lofproductlabel-label-image, .lofproductlabel-label-container {
+    position: relative !important;
+    right: 24% !important;
+}

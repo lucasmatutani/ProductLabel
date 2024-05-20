@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\Image">
+        <plugin name="Lof_ProductLabel::AddLabel" type="Lof\ProductLabel\Plugin\Catalog\Product\Label"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="Lof_ProductLabel::AddLabel" type="Lof\ProductLabel\Plugin\Catalog\Product\View\Label"/>
+    </type>
+
+    <type name="MagicToolbox\MagicZoomPlus\Block\Product\View\Gallery">
+        <plugin name="Lof_ProductLabel::AddLabel_Magic" type="Lof\ProductLabel\Plugin\Catalog\Product\View\Label"/>
+    </type>
+
+    <type name="MagicToolbox\MagicThumb\Block\Product\View\Gallery">
+        <plugin name="Lof_ProductLabel::AddLabel_MagicThumb" type="Lof\ProductLabel\Plugin\Catalog\Product\View\Label"/>
+    </type>
+
+     <type name="Younify\Configurator\Block\Product\View\Gallery">
+        <plugin name="Lof_ProductLabel::AddLabel_Younify" type="Lof\ProductLabel\Plugin\Catalog\Product\View\Label"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ImageBuilder">
+        <plugin name="Lof_ProductLabel::AddProductToData" type="Lof\ProductLabel\Plugin\Catalog\Product\ImageBuilder"/>
+    </type>
+
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="Lof_ProductLabel::ListProduct" type="Lof\ProductLabel\Plugin\Catalog\Product\ListProduct"/>
+    </type>
+
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="Lof_ProductLabel::CatalogWidget" type="Lof\ProductLabel\Plugin\Catalog\Product\ListProduct"/>
+    </type>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="Lof_ProductLabel::ajax-config" type="Lof\ProductLabel\Plugin\Product\View\Type\Configurable"/>
+    </type>
+</config>

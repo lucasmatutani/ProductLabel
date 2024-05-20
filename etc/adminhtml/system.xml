@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="lofproductlabel" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Product Label</label>
+            <tab>landofcoder</tab>
+            <resource>Lof_ProductLabel::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Options</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <comment>Choose "Yes" to enable module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="display" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Display Settings</label>
+                <field id="product" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Product Page Label Wrapper Class</label>
+                    <comment>CSS selector for product. We will find this CSS class to detect label position to show.</comment>
+                </field>
+                <field id="category" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Listing Page Label Wrapper Class</label>
+                    <comment>CSS selector for product. We will find this CSS class to detect label position to show.</comment>
+                </field>
+                <field id="max_labels" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Maximum number of labels for each</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="allow_multiple_labels" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show multiple labels on the same position</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="label_alignment" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label Alignment</label>
+                    <comment>Select how the labels should line up</comment>
+                    <source_model>Lof\ProductLabel\Model\Source\Alignment</source_model>
+                    <depends>
+                        <field id="allow_multiple_labels">1</field>
+                    </depends>
+                </field>
+                <field id="margin_between" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margin between labels, px</label>
+                    <comment>Set the margin between labels in pixel</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="allow_multiple_labels">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="on_sale" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>On Sale Condition</label>
+                <field id="sale_min" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Minimal discount amount</label>
+                </field>
+                <field id="sale_min_percent" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Minimal discount percentage</label>
+                </field>
+                <field id="rounding" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Rounding of discount percentage</label>
+                    <source_model>Lof\ProductLabel\Model\Source\Rounding</source_model>
+                </field>
+            </group>
+            <group id="new" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>New Product Condition</label>
+                <field id="is_new" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use `New from Date` and `New to Date`</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="creation_date" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use Created Date</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>It will not be used if previous setting set to `Yes` and product have `New from Date` or `New to Date` attributes.</comment>
+                </field>
+                <field id="days" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Product is new threshold</label>
+                    <comment>In days</comment>
+                    <depends>
+                        <field id="creation_date">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="stock_status" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Out of Stock label</label>
+                <field id="out_of_stock_only" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show a specific Out of Stock label</label>
+                    <comment>
+                        <model>Lof\ProductLabel\Model\Source\LabelRenderer</model>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>Lof\ProductLabel\Model\Config\Backend\StockStatus</backend_model>
+                </field>
+                <field id="default_label" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Default Out of Stock Label</label>
+                    <source_model>Lof\ProductLabel\Model\Source\LabelRenderer</source_model>
+                    <backend_model>Lof\ProductLabel\Model\Config\Backend\DefaultStockLabel</backend_model>
+                    <depends>
+                        <field id="out_of_stock_only">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

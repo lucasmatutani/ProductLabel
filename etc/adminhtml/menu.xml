@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Lof_ProductLabel::main" title="Product Label" module="Lof_ProductLabel" sortOrder="51" parent="Lof_All::lof_all" resource="Lof_ProductLabel::label"/>
+        <add id="Lof_ProductLabel::label" title="Product Labels" module="Lof_ProductLabel" sortOrder="1" parent="Lof_ProductLabel::main" action="lofproductlabel/label/index"
+             resource="Lof_ProductLabel::label"/>
+        <add id="Lof_ProductLabel::config_productlabel" title="Configuration" module="Lof_ProductLabel" sortOrder="10000" parent="Lof_ProductLabel::main" action="adminhtml/system_config/edit/section/lofproductlabel"
+             resource="Lof_ProductLabel::config"/>
+    </menu>
+</config>

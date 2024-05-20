@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/lofproductlabel/get/:id" method="GET">
+        <service class="Lof\ProductLabel\Api\LabelRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Lof_ProductLabel::label"/>
+        </resources>
+    </route>
+    <route url="/V1/lofproductlabel/delete/:id" method="DELETE">
+        <service class="Lof\ProductLabel\Api\LabelRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Lof_ProductLabel::label"/>
+        </resources>
+    </route>
+    <route url="/V1/lofproductlabel/save" method="POST">
+        <service class="Lof\ProductLabel\Api\LabelRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Lof_ProductLabel::label"/>
+        </resources>
+    </route>
+    <route url="/V1/lofproductlabel/all" method="GET">
+        <service class="Lof\ProductLabel\Api\LabelRepositoryInterface" method="getAll"/>
+        <resources>
+            <resource ref="Lof_ProductLabel::label"/>
+        </resources>
+    </route>
+</routes>

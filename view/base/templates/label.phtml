@@ -1,0 +1,33 @@
+<?php
+/** @var \Lof\ProductLabel\Model\Label $label */
+/** @var \Lof\ProductLabel\Block\Label $block */
+$label         = $block->getLabel();
+$productId     = (int) $label->getProduct()->getId();
+$labelFor      = $label->getParentProduct() ? $label->getParentProduct()->getId() : $productId;
+$key           = $label->getId() . '-' . $label->getProduct()->getId() . '-' . $label->getMode();
+$text          = $label->getText();
+$escText       = strip_tags( $text );
+$labelSelector = '.lofproductlabel-label-container-' . $key;
+?>
+<div class="lofproductlabel-label-container lofproductlabel-label-container-<?= $block->escapeHtml( $key ); ?> lofproductlabel-label-for-<?= $block->escapeHtml( $labelFor ) ?>"
+     style="display: none; <?= $block->escapeHtml( $label->getStyle() ); ?>">
+    <div class="lofproductlabel-label-text" style="<?= $block->escapeHtml( $label->getValue( 'text_style' ) ); ?>"><?= strip_tags( $text, '<br>,<a>,<b>' ); ?></div>
+    <?php if ( $block->getImageScr() ) : ?>
+        <img class="lofproductlabel-label-image"
+             id="lofproductlabel-label-image-<?= $block->escapeHtml( $key ); ?>"
+             src="<?= $block->escapeUrl( $block->getImageScr() ); ?>"
+             style="opacity: 1 !important;vertical-align: top;"
+             title="<?= $block->escapeHtml( $escText ) ?>"
+             alt="<?= $block->escapeHtml( $escText ? $escText : $label->getProduct()->getName() ) ?>"
+        >
+    <?php endif; ?>
+</div>
+<script>
+    require([
+        'jquery',
+        'Lof_ProductLabel/js/label',
+        'domReady!'
+    ], function ($) {
+        $("<?= $block->escapeHtml( $labelSelector ) ?>").lofShowLabel(<?= /* @noEscape */ $block->getJsonConfig()?>)
+    })
+</script>

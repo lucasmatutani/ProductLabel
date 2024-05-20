@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Lof_ProductLabel::css/productlabel.css"/>
+        <css src="jquery/colorpicker/css/colorpicker.css"/>
+    </head>
+    <body>
+        <referenceContainer name="left">
+            <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit\Tabs" name="lofproductlabel_label_edit_tabs">
+                <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit\Tab\General" name="lofproductlabel_label_edit_tab_general"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">lofproductlabel_label_edit_tab_general</argument>
+                </action>
+                <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit\Tab\Product" name="lofproductlabel_label_edit_tab_product"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">product_image_section</argument>
+                    <argument name="block" xsi:type="string">lofproductlabel_label_edit_tab_product</argument>
+                </action>
+                <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit\Tab\Category" name="lofproductlabel_label_edit_tab_category"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">category_image_section</argument>
+                    <argument name="block" xsi:type="string">lofproductlabel_label_edit_tab_category</argument>
+                </action>
+                <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit\Tab\Conditions" name="lofproductlabel_label_edit_tab_conditions"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">conditions_section</argument>
+                    <argument name="block" xsi:type="string">lofproductlabel_label_edit_tab_conditions</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Lof\ProductLabel\Block\Adminhtml\Label\Edit" name="label_labels_edit"/>
+        </referenceContainer>
+    </body>
+</page>
